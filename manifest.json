@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Login Journey Extension",
+  "description": "Login Journey Extension",
+  "version": "0.0.1",
+  "permissions": [
+    "storage",
+    "tabs",
+    "webRequest",
+    "activeTab"
+  ],
+  "action": {
+    "default_icon": {
+      "32": "icons/if_source_code_103710.svg"
+    },
+    "default_title": "Login Journey Extension",
+    "default_popup": "./index.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "contentScript.js"
+      ]
+    }
+  ]
+}
