@@ -28,7 +28,7 @@ function insertedAndUpdated(data, onSuccess, onError) {
  * @param {string[]} keys - Chaves para pesquisas no localStorage
  * @param {Function} onSuccess - Função para ser resolvida com sucesso da promise
  * @param {Function} onError - Função para ser resolvida com erro da promise
- * @returns {LoginData} 
+ * @returns {{LoginData}} 
  */
 function selected(keys, onSuccess, onError) {
   browser.storage.local.get(keys)
@@ -37,20 +37,20 @@ function selected(keys, onSuccess, onError) {
 
 function initialize() {
   const keys = ['data'];
-  selected(keys, (item) => {
-    enableJourney.checked = item?.data.enableJourney;
-    email.value = item?.data.email;
-    password.value = item?.data.password;
+  selected(keys, ({ data }) => {
+    enableJourney.checked = data.enableJourney;
+    email.value = data.email;
+    password.value = data.password;
   }, (error) => {
     console.error(error);
   });
 }
 
-window.addEventListener('load', (event) => {
+window.addEventListener('load', () => {
   initialize();
 });
 
-save.addEventListener("click", (event) => {
+save.addEventListener("click", () => {
   if (!email.value || !password.value) {
     alert("Dados em brancos!");
     return;
