@@ -18,7 +18,7 @@ const save = document.getElementById("save");
  * @returns void
  */
 function insertedAndUpdated(data, onSuccess, onError) {
-  browser.storage.local.set({ data })
+  chrome.storage.local.set({ data })
     .then(onSuccess, onError);
 }
 
@@ -31,13 +31,12 @@ function insertedAndUpdated(data, onSuccess, onError) {
  * @returns {{LoginData}} 
  */
 function selected(keys, onSuccess, onError) {
-  browser.storage.local.get(keys)
+  chrome.storage.local.get(keys)
     .then(onSuccess, onError);
 }
 
 function initialize() {
-  const keys = ['data'];
-  selected(keys, ({ data }) => {
+  selected(['data'], ({ data }) => {
     enableJourney.checked = data.enableJourney;
     email.value = data.email;
     password.value = data.password;
