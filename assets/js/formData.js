@@ -1,6 +1,7 @@
 const enableJourney = document.getElementById("enableJourney");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
+const rememberMe = document.getElementById('rememberMe');
 const save = document.getElementById("save");
 
 /**
@@ -40,6 +41,7 @@ function initialize() {
     enableJourney.checked = data.enableJourney;
     email.value = data.email;
     password.value = data.password;
+    rememberMe.checked = data.rememberMe
   }, (error) => {
     console.error(error);
   });
@@ -58,7 +60,8 @@ save.addEventListener("click", () => {
   insertedAndUpdated({
     enableJourney: enableJourney.checked,
     email: email.value,
-    password: password.value
+    password: password.value,
+    rememberMe: rememberMe.checked,
   }, () => {
     alert("Informações salvas!");
   }, () => {

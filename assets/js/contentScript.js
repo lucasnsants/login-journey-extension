@@ -49,8 +49,8 @@ function loginJourney(data) {
 
 window.addEventListener('load', (event) => {
   selected(['data'], ({ data }) => {
-    if (!data?.email || !data?.password) {
-      console.error('Dados não inseridos para automatização da extensão');
+    if (!data?.email || !data?.password || !data?.enableJourney) {
+      console.error('Dados não inseridos para automatização ou extensão desabilitada.');
       return;
     }
     loginJourney(data);
