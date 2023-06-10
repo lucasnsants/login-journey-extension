@@ -7,7 +7,12 @@
     "storage",
     "tabs",
     "webRequest",
-    "activeTab"
+    "activeTab",
+    "scripting",
+    "webRequest"
+  ],
+  "host_permissions": [
+    "http://*/login-journey/*"
   ],
   "action": {
     "default_icon": {
@@ -19,10 +24,10 @@
   "content_scripts": [
     {
       "matches": [
-        "<all_urls>"
+        "http://*/login-journey/*"
       ],
       "js": [
-        "contentScript.js"
+        "assets/js/contentScript.js"
       ]
     }
   ]
